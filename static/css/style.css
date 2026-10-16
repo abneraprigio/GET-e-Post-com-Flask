@@ -1,0 +1,74 @@
+/* Base: box-sizing inclui padding e borda na largura dos elementos. */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #2B2D33;
+  background: #F4F4F5;
+  line-height: 1.5;
+}
+.container { width: min(100% - 32px, 850px); margin-inline: auto; }
+.topo { background: #0A192F; color: #FFFFFF; padding: 24px 0; }
+.marca { font-size: 24px; font-weight: bold; margin: 0; }
+.subtitulo { margin: 3px 0 0; }
+main { padding-block: 26px 48px; }
+h1, h2 { color: #1E4E79; }
+h1 { margin-bottom: 4px; }
+
+/* Painéis e campos: border-radius arredonda os cantos. */
+.painel {
+  background: #FFFFFF;
+  border: 1px solid #D9DEE5;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 22px;
+}
+.painel h2 { margin-top: 0; }
+label { display: block; font-weight: bold; margin: 14px 0 5px; }
+input {
+  display: block;
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #9AA8B8;
+  border-radius: 7px;
+  font: inherit;
+  /* transition suaviza a mudança da borda e da sombra no foco. */
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+/* :focus aplica o efeito quando o usuário entra no campo. */
+input:focus {
+  border-color: #1E4E79;
+  outline: 3px solid #C49A6C;
+  outline-offset: 2px;
+}
+
+button {
+  margin-top: 18px;
+  padding: 11px 18px;
+  border: 0;
+  border-radius: 7px;
+  background: #1E4E79;
+  color: #FFFFFF;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  /* As propriedades mudam gradualmente em vez de saltar. */
+  transition: transform .2s ease, opacity .2s ease;
+}
+/* :hover ocorre quando o ponteiro está sobre o botão. */
+button:hover {
+  transform: translateY(-2px); /* Sobe dois pixels sem mudar o espaço ocupado. */
+  opacity: .88;               /* Reduz um pouco a opacidade. */
+}
+/* O teclado também precisa de um sinal visual claro. */
+button:focus-visible { outline: 3px solid #C49A6C; outline-offset: 3px; }
+button:active { transform: translateY(0); }
+.mensagem { min-height: 1.5em; margin-bottom: 0; }
+.lista-alunos { padding-left: 22px; }
+.lista-alunos li { padding: 5px 0; border-bottom: 1px solid #E2E5EA; }
+
+/* Respeita a preferência de quem reduz movimentos no sistema. */
+@media (prefers-reduced-motion: reduce) {
+  input, button { transition: none; }
+  button:hover, button:active { transform: none; }
+}

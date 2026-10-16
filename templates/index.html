@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API da Escola | Alunos</title>
+  <!-- Flask serve arquivos da pasta static por meio de url_for. -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topo">
+    <div class="container">
+      <p class="marca">Sistema Escola</p>
+      <p class="subtitulo">Cadastro e consulta de alunos pela API</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Alunos da Escola</h1>
+    <p>Consulte os alunos ou faça um novo cadastro. As respostas vêm da API em JSON.</p>
+
+    <section class="painel" aria-labelledby="titulo-cadastro">
+      <h2 id="titulo-cadastro">Cadastrar aluno</h2>
+      <form id="cadastro">
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" placeholder="Nome completo" maxlength="100" required>
+
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" placeholder="aluno@exemplo.com" maxlength="120" required>
+
+        <label for="telefone">Telefone</label>
+        <input id="telefone" name="telefone" type="tel" placeholder="Opcional" maxlength="20">
+
+        <button type="submit">Cadastrar pela API</button>
+      </form>
+      <p id="cadastro-aviso" class="mensagem" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="painel" aria-labelledby="titulo-consulta">
+      <h2 id="titulo-consulta">Consultar alunos</h2>
+      <button id="buscar" type="button">Buscar alunos pela API</button>
+      <p id="aviso" class="mensagem" role="status" aria-live="polite"></p>
+      <ul id="lista" class="lista-alunos"></ul>
+    </section>
+  </main>
+
+  <!-- Flask entrega o arquivo JavaScript da pasta static ao navegador. -->
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</body>
+</html>
